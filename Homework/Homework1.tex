@@ -1,0 +1,286 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{tasks}
+\pagestyle{fancy}
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{mwe}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\setlength{\parindent}{0pt}
+\begin{document}
+ \settasks{
+	counter-format=(tsk[r]),
+	label-width=4ex
+}
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 475}
+\chead{Homework 1}
+\rhead{Meenmo Kang}
+
+\begin{enumerate}
+    %2.7.1
+    \item For each of the four subsets of the two properties (a) and (b), count the number of four-digit numbers whose digits are either 1,2,3,4, or 5:
+    \begin{enumerate}[label=(\alph*)]
+        \item The digits are distinct.
+        \item The number is even.
+    \end{enumerate}
+    Note that there are four problems here: $\phi$ (no further restriction), \{a\} (property(a) holds), \{b\} (property (b) holds), \{a,b\} (both properties (a) and (b) hold).\\
+    
+    %Sol.
+    \begin{itemize}
+        \item $\phi$: $5\times 5\times 5\times 5 = 5^4 = 625$ \hfill (since there is no restriction.)
+        \item \{a\}: $5\times 4\times 3\times 2 = 120$ \hfill (sample without replacement)
+        \item \{b\}: $5\times 5\times 5\times 2 = 250$ \hfill (last digit must be either 2 or 4)
+        \item \{a, b\}: $2\times 4\times 3\times 2$ \\ 
+        (last digit must be even AND sample without replacement rest of three digits)
+    \end{itemize}
+    
+    
+    
+    %2
+    \item How many orderings are there for a deck of 52 cards if all the cards of the same suit are together?
+    \boldmath$$\underbrace{4!}_{\text{the order of suits}}\times \underbrace{13!^4}_{\text{the order within the suit}}$$
+    
+    %4
+    \item How many distinct positive divisors does each of the following numbers have?
+    \begin{enumerate}[label=(\alph*)]
+        \item $3^4\times 5^2\times 7^6\times 11$\\
+        \boldmath{$(4+1)\times (2+1)\times (6+1) \times (1+1)= 210$}\\
+        
+        \item 620 \boldmath{=$2^2\times 5^1\times 31$}\\
+        \boldmath{$(2+1)\times (1+1)\times (1+1) = 12$}\\
+        
+        \item $10^{10}$ \boldmath{$=2^{10}\times 5^{10}$}\\
+        \boldmath{$(10+1)\times (10+1) =121$}\\
+    \end{enumerate}
+
+    
+    \newpage
+    %5
+    \item Determine the largest power of 10 that is a factor of the following numbers (equivalently, the number of terminal 0s, using ordinary base 10 representation):
+    \begin{enumerate}[label=(\alph*)]
+        \item 50!\\
+        
+        10 can be factored as 2 and 5 which are both prime numbers. By finding quotient of 50 divide by the power of 2 and 5, we can find how many 2 and 5 are multiplied for 50! in order to determine the largest power of 10 that is a factor of 50!.
+        \begin{itemize}
+            \item The quotient of $\frac{50}{2^1} = 25$
+            \item The quotient of $\frac{50}{2^2} = 12$
+            \item The quotient of $\frac{50}{2^3} = 6$
+            \item The quotient of $\frac{50}{2^4} = 3$
+            \item The quotient of $\frac{50}{2^5} = 1$
+        \end{itemize}
+        $\Rightarrow$ \text{their sum is 47.}
+        
+        \begin{itemize}
+            \item The quotient of $\frac{50}{5^1} = 10$
+            \item The quotient of $\frac{50}{5^2} = 2$
+        \end{itemize}
+         $\Rightarrow$ \text{their sum is 12.}\\
+         
+         We can observe that $100=2^{47}\cdot 5^{12}\cdot \alpha$. Therefore, the largest power of 10 that is a factor of 50! is 12.\\
+         
+        
+        \item 1000!\\
+        \begin{itemize}
+            \item The quotient of $\frac{1000}{5^1} = 200$
+            \item The quotient of $\frac{1000}{5^2} = 40$
+            \item The quotient of $\frac{1000}{5^3} = 8$
+            \item The quotient of $\frac{1000}{5^4} = 1$
+        \end{itemize}
+        $\Rightarrow$ \text{their sum is 249.}\\
+        
+        Therefore, the largest power of 10 that is a factor of 1000! is 249.
+        
+    \end{enumerate}
+    
+    %6
+    \newpage
+    \item How many integers greater than 5400 have both of the following properties?
+    \begin{enumerate}[label=(\alph*)]
+        \item The digits are distinct.
+        \item The digits 2 and 7 do not occur.\\
+    \end{enumerate}
+    
+    \begin{itemize}
+        \item 4-digit
+        \begin{itemize}
+            \item If the first digit is 5
+            \begin{itemize}
+                \item If the second digit is 4\\
+               \boldmath$\Rightarrow 6\times 5=30$
+                \item Else
+                \begin{itemize}
+                    \item 2nd digit: All possible options are \{6,8,9\}
+                    \item 3rd and 4th digit: 6 and 5 respectively\\
+                    \boldmath{$\Rightarrow\; 3\times 6\times 5$}
+                \end{itemize}
+            \boldmath{$\Rightarrow 90$}\\
+            \end{itemize}
+            
+            \item Else
+            \begin{itemize}
+                \item 1st digit: All possible options are \{6,8,9\}
+                \item 2nd digit: Remaining number of digits is 7, excluding 2,7, and one of \{6,8,9\}
+                \item 3rd and 4th digit: 6 and 5 respectively\\
+                \boldmath{$\Rightarrow\; 3\times 7\times 6\times 5 = 630$}
+            \end{itemize}
+        \end{itemize}
+        
+        \item 5-digit\\
+        \boldmath{$\Rightarrow\; 7\times 7\times 6\times 5\times 4= 5880$}\\
+        
+        \item 6-digit\\
+        \boldmath{$\Rightarrow\; 7\times 7\times 6\times 5\times 4\times 3= 17640$}\\
+        
+        \item 7-digit\\
+        \boldmath{$\Rightarrow\; 7\times 7\times 6\times 5\times 4\times 3\times 2= 35280$}\\
+        
+        \item 8-digit\\
+        \boldmath{$\Rightarrow\; 7\times 7\times 6\times 5\times 4\times 3\times 2\times 1= 35280$}\\
+    \end{itemize}
+    $$30+90+630+5880+17640+35280+35280$$
+    \\
+    
+    %7
+    \item In how many ways can four men and eight women be seated at a round table if there are to be two women between consecutive men around the table?\\
+    \boldmath{$3!\times 8!$}    
+    
+    
+    %9
+    \item In how many ways can 15 people be seated at a round table if B refuses to sit next to A? What if B only refuses to sit on A's right?
+    
+    \begin{itemize}
+        \item Suppose A sit first at the table. Then there are 14! ways of 15 people to be seated in total.
+        \item Suppose B is sitting on the left of A. Then there are 13! ways of other 13 people to be seated.
+        \item Suppose B is sitting on the right of A. Then there are also 13! ways of other 13 people to be seated.
+        \item As a result, if B refuses to sit next to A, there are \boldmath{$14! - 2\times 13!$} ways that 15 people can be seated at the table.\\
+        
+        \item If B refuses to be seated next to A, then one of other 13 people is sitting there. \item Then remaining 13 seats can be arranged as many as 13! ways.
+        \item Thus there are \boldmath{$13\times 13!$} ways 15 people to be seated if B refuses to sit next to A.
+    \end{itemize}
+    
+    \vspace{2\baseslineskip}
+    %14
+    \item A classroom has two rows of eight seats each. There are 14 students, 5 of whom always sit in the front row and 4 of whom always sit in the back row. In how many ways can the students be seated?\\
+    
+    \begin{itemize}
+        \item 5 of whom always sit in the front row\\
+        \boldmath{$\binom{8}{5}\times 5!$}
+        
+        \item 4 of whom always sit in the back row\\
+        \boldmath{$\binom{8}{4}\times 4!$}
+        
+        \item Rest of students\\
+        \boldmath{$\binom{7}{5}\times 5!$}\\
+        
+    \boldmath{$\Rightarrow \binom{8}{5}\times 5!\times \binom{8}{4}\times 4!\times \binom{7}{5}\times 5!$}
+    \end{itemize}
+    
+    \newpage
+    %12
+    \item A football team of 11 players is to be selected from a set of 15 players, 5 of whom can play only in the backfield, 8 of whom can play only on the line, and 2 of whom can play either in the backfield or on the line. Assuming a football team has 7 men on the line and 4 men in the backfield, determine the number of football teams possible.
+    \begin{itemize}
+        \item  When none of those two players who can play either in the backfield or on the line are included.
+        $$\binom{8}{7}\times \binom{5}{4}$$
+        \item When one of those two players are included.
+        $$\binom{8}{6}\times\binom{5}{4}+\binom{8}{7}\times\binom{5}{3}$$
+        \item When both players are included.
+        \begin{itemize}
+            \item When both players play in the backfield
+            $$\binom{8}{7}\times \binom{5}{2}$$
+            \item When both players play on the line
+            $$\binom{8}{5}\times \binom{5}{4}$$
+            \item Otherwise
+            $$2\left[\binom{8}{6}\times \binom{5}{3}\right]$$
+        \end{itemize}
+        Thus, the number of football teams possible is
+        $$\binom{8}{7}\times \binom{5}{4} + \left[\binom{8}{6}\times\binom{5}{4}+\binom{8}{7}\times\binom{5}{3}\right]$$
+        $$+\left\{\binom{8}{7}\times \binom{5}{2}+\binom{8}{5}\times \binom{5}{4}+ 2\left[\binom{8}{6}\times \binom{5}{3}\right] \right\}$$
+    \end{itemize}
+
+    \newpage
+    %13
+    \item There are 100 students at a school and three dormitories, A, B, and C, with capacities 25, 35 and 40, respectively.
+    \begin{enumerate}[label=(\alph*)]
+        \item How many ways are there to fill the dormitories?
+        $$\binom{100}{25}\times \binom{75}{35} = \frac{100!}{25!35!40!}$$
+        \item Suppose that, of the 100 students, 50 are men and 50 are women and that A is an all-men's dorm, B is an all-women's dorm, and C is co-ed. How many ways are there to fill the dormitories?
+        $$\binom{50}{35}\times\binom{50}{25}$$
+    \end{enumerate}
+    
+    %20
+    \item Determine the number of circular permutations of \{0,1,2, ... ,9\} in which 0 and 9 are not opposite. (Hint: Count those in which 0 and 9 are opposite.)
+    \begin{itemize}
+        \item The total number of permutation: \boldmath$9!$
+        \item The number of permutation in which 0 and 9 are opposite: \boldmath$8!$\\
+        (Since if we fix the location of 0 and 9 in which those are opposite, the number of permutation regarding remaining seats is 8!.)
+    \end{itemize}
+    Thus, the number of circular permutations of \{0,1,2, ... ,9\} in which 0 and 9 are not opposite is 
+    $$9!-8!$$
+    %39
+    \item There are 20 identical sticks lined up in a row occupying 20 distinct places as follows:
+    $$|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|\;|$$
+    Six of them are to be chosen.
+    \begin{enumerate}[label=(\alph*)]
+        \item How many choices are there?
+        $$\binom{20}{6}$$
+        \item How many choices are there if no two of the chosen sticks can be consecutive?\\
+        
+        If there are no sticks that are chosen consecutively, there must be seven partitions in total. Then consider $\{a_i\}_{i=1}^6$ to be chosen sticks and $\{x_i\}_{i=1}^7$ to be the number of bars before $a_n$. It is clear that $\{x_i\}_{i=2}^6$ are at least 1. As for $x_1$ and $x_7$, those could be 0, if the very first or last stick is chosen.\\
+        
+        Suppose $\{x_i\}_{i=2}^6 = \{y_i\}_{i=2}^6+1$ and $\sum_{i=1}^7 x_i = 14$ (since 6 sticks are already chosen). Then $\sum_{i=1}^7 x_i = x_1 + (y_2+1) + ... + (y_6 +1) + x_7 = 14 \Leftrightarrow$\\
+        $x_1+y_2+...+y_6+x_7 = 14-5 = 9$. Since each of $x_1+y_2+...+y_6+x_7$ is at least 0, non negative integer, we can achieve the answer as below by the formula from the Theorem 2.5.1 on the textbook.
+        $$\binom{9+7-1}{9}$$
+        
+        \item How many choices are there if there must be at least two sticks between each pair of chosen sticks?\\
+        
+        Since there must be at least two sticks between each pair of chosen sticks, we can consider this $\{x_i\}_{i=2}^6 = \{y_i\}_{i=2}^6+2$. Then $x_1+y_2+...+y_6+x_7 = 14-10 = 4$. Therefore, we are getting the answer as below.
+        $$\binom{4+7-1}{4}$$
+    \end{enumerate}
+\end{enumerate}
+\end{document}

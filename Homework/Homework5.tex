@@ -1,0 +1,180 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{tasks}
+\pagestyle{fancy}
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{mwe}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\setlength{\parindent}{0pt}
+\begin{document}
+ \settasks{
+	counter-format=(tsk[r]),
+	label-width=4ex
+}
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 475}
+\chead{Homework 5}
+\rhead{Meenmo Kang}
+
+\begin{enumerate}
+    \item[\bf 5.16] By integrating the binomial expansion, prove that, for a positive integer $n$,
+    $$1+\frac{1}{2}\binom{n}{1} + \frac{1}{3}\binom{n}{2}+\dotsb\frac{1}{n+1}\binom{n}{n}=\frac{2^{n+1}-1}{n+1}.$$\\
+    
+    Consider binomial expansion of $(1+x)^n$.
+    \begin{align*}
+        (1+x)^n &= 1+\binom{n}{1}x + \binom{n}{2}x^2 + \dotsb + \binom{n}{n}x^n\\
+        \int (1+x)^n dx &= \int\left[1+\binom{n}{1}x + \binom{n}{2}x^2 + \dotsb + \binom{n}{n}x^n\right]dx\\
+        \frac{1}{n+1}(1+x)^{n+1} &= x + \frac{x^2}{2}\binom{n}{1}+\frac{x^3}{3}\binom{n}{2}+\dotsb+\frac{x^{n+1}}{n+1}\binom{n}{n}+C
+    \end{align*}
+    when plugging in $x=0$, $C$ turns out to be $\frac{1}{n+1}$.
+    \begin{align*}
+        \frac{1}{n+1}(1+x)^{n+1} &= x + \frac{x^2}{2}\binom{n}{1}+\frac{x^3}{3}\binom{n}{2}+\dotsb+\frac{x^{n+1}}{n+1}\binom{n}{n}+\frac{1}{n+1}
+    \end{align*}
+    Consider $x=1$.
+    \begin{align*}
+        \frac{2^{n+1}}{n+1} &= 1 + \frac{1}{2}\binom{n}{1} + \frac{1}{3}\binom{n}{2} + \dotsb + \frac{1}{n+1}\binom{n}{n} +\frac{1}{n+1}\\
+        \frac{2^{n+1}}{n+1}-\frac{1}{n+1} &= 1 + \frac{1}{2}\binom{n}{1} + \frac{1}{3}\binom{n}{2} + \dotsb + \frac{1}{n+1}\binom{n}{n}\\
+        \frac{2^{n+1}-1}{n+1} &= 1 + \frac{1}{2}\binom{n}{1} + \frac{1}{3}\binom{n}{2} + \dotsb + \frac{1}{n+1}\binom{n}{n}
+    \end{align*}
+    
+    %\vspace{1.5\baselineskip}
+    \newpage
+    \item[\bf 5.19] Sum the series $1^2+2^2+3^2+\dotsb+n^2$ by observing that
+    $$m^2=2\binom{m}{2}+\binom{m}{1}$$
+    and using the identity (5.19).\\
+    
+    \begin{align*}
+        \sum\limits_{m=1}^n m^2&=
+            2\sum\limits_{m=1}^n\binom{m}{2} + \sum\limits_{m=1}^n\binom{m}{1}
+    \end{align*}
+    By suing the identity
+    $$\binom{n+1}{k+1} = \sum\limits_{i=0}^n \binom{i}{k}$$
+    \begin{align*}
+        \sum\limits_{m=1}^n m^2&= 2\cdot\binom{n+1}{2+1} + \binom{n+1}{1+1}\\
+        &= 2\cdot\frac{(n+1)!}{3!(n-2)!} + \frac{(n+1)!}{2!(n-1)!} \\
+        &=2\cdot \frac{(n+1)\cdot n\cdot(n-1)(n-2)}{3!} +\frac{(n+1)n}{2!}\\
+        &= \frac{n(n+1)\cdot[2(n-1)+3]}{6} \\
+        &=\frac{n(n+1)(2n-1)}{6} = 1^2+2^2+3^2+\dotsb+n^2
+    \end{align*}
+    
+    \newpage
+    \item[\bf 5.37] Use the multinomial theorem to show that, for positive integers $n$ and $t$,
+    $$t^n=\sum\binom{n}{n_1n_2\dotsb n_t},$$
+    where the summation extends over all nonnegative integral solutions $n_1,n_2,...,n_t$ of $n_1+n_2+...+n_t=n$.\\
+    
+    Recall Multinomial Theorem 
+    $$(x_1+x_2+x_3+...+x_t)^n = \sum\binom{n}{n_1n_2\ldots n_t}x_1^{n_1}x_2^{n_2}x_3^{n_3}\ldots x_t^{n^t}$$
+    
+    To show the given equation on the question, consider all $x_i$ to be 1. Then
+    \begin{align*}
+    t^n = (\underbrace{1+1+\dotsb+1}_t)^n &= \sum\binom{n}{n_1n_2\ldots n_t}1^{n_1}1^{n_2}1^{n_3}\ldots 1^{n^t}\\
+    &=\sum\binom{n}{n_1n_2\ldots n_t}
+    \end{align*}
+    
+    \newpage
+    \item[\bf 5.38] Use the multinomial theorem to expand $(x_1+x_2+x_3)^4$.\\
+    
+    By the theorem
+    \begin{align*}
+    (x_1+x_2+x_3)^4 &= \sum\limits_{n_1+n_2+n_3=4}\binom{4}{n_1\;n_2\;n_3}x_1^{n_1}x_2^{n_2}x_3^{n_3}\\
+    &= \frac{4!}{4!}(x_1^4+x_2^4+x_3^4) + \\
+    &\quad\frac{4!}{1!\;3!}(x_1^1x_2^3+x_1^3x_2^1+x_1^1x_3^3+x_1^3x_3^1+x_2^1x_3^3+x_2^3x_3^1)+\\
+    &\quad\frac{4!}{2!\;2!}(x_1^2x_2^2+x_1^2x_3^2+x_2^2x_3^2)+\\
+    &\quad\frac{4!}{1!\;1!\;2!}(x_1^2x_2x_3+x_1x_2^2x_3+x_1x_2x_3^2)\\
+    \\
+    &= x_1^4+x_2^4+x_3^4 + \\
+    &\quad4(x_1^1x_2^3+x_1^3x_2^1+x_1^1x_3^3+x_1^3x_3^1+x_2^1x_3^3+x_2^3x_3^1)+\\
+    &\quad6(x_1^2x_2^2+x_1^2x_3^2+x_2^2x_3^2)+\\
+    &\quad12(x_1^2x_2x_3+x_1x_2^2x_3+x_1x_2x_3^2)\\
+    \end{align*}
+    
+    \vspace{2\baselineskip}
+    \item[\bf 5.39] Determine the coefficient of $x_1^3x_2x_3^4x_5^2$ in the expansion of $(x_1+x_2+x_3+x_4+x_5)^{10}.$\\
+
+    \begin{align*}
+        \binom{10}{3\;1\;4\;2} &= \frac{10!}{3!\;1!\;4!\;2!}\\ &=10\cdot9\cdot4\cdot7\cdot5 
+        =12600
+    \end{align*}
+    
+    
+    \vspace{2\baselineskip}
+    \item[\bf 5.40] What is the coefficient of $x_1^3x_2^3x_3x_4^2$ in the expansion of $$(x_1-x_2+2x_3-2x_4)^9?$$
+    
+    \begin{align*}
+        \binom{9}{3\;3\;1\;2}\cdot1^3\cdot(-1)^3\cdot2^1\cdot(-2)^2 = -40320
+    \end{align*}
+    
+    \vspace{2\baselineskip}
+    \item[\bf 5.46] Use Newton's binomial theorem to approximate $\sqrt{30}$.
+    
+    \begin{align*}
+        \sqrt{30}&= \sqrt{25+5} = 5\sqrt{\left(1+\frac{1}{5}\right)} = 5\left(1+\frac{1}{5}\right)^{1/2}\\
+        \text{By Newton's Binomial Theorem}\\
+        &=5\left[1 + \frac{\frac{1}{2}\cdot\frac{1}{5}}{1!} + 
+        \frac{\frac{1}{2}\cdot\left(-\frac{1}{2}\right)\left(\frac{1}{5}\right)^2}{2!}+
+        \frac{\frac{1}{2}\cdot\left(-\frac{1}{2}\right)\left(-\frac{3}{2}\right)\left(\frac{1}{5}\right)^3}{3!}+\dotsb\right]\\
+        &=5\left[1+\frac{1}{10}-\frac{1}{8}\cdot\frac{1}{5^2}+\frac{3}{48}\frac{1}{5^3}+\dotsb        \right]\\
+        &=5\left[1+\frac{1}{10}-\frac{1}{200} + \frac{1}{2000}\right]\\
+        &\approx 5.4775
+    \end{align*}
+    
+    \vspace{2\baselineskip}
+    \item[\bf 5.47] Use Newton's binomial theorem to approximate $10^{1/3}$.
+    
+    \begin{align*}
+        10^{1/3} &= (8+2)^{1/3} = \left[2^3\left(1+\frac{1}{4}\right)\right]^{1/3}\\
+        &=2\left[1 + \frac{\frac{1}{3}\cdot\frac{1}{4}}{1!} + 
+        \frac{\frac{1}{3}\cdot\left(-\frac{2}{3}\right)\left(\frac{1}{4}\right)^2}{2!}+
+        \frac{\frac{1}{3}\cdot\left(-\frac{2}{3}\right)\left(-\frac{5}{3}\right)\left(\frac{1}{4}\right)^3}{3!}+\dotsb\right]\\
+        &=2\left[1+\frac{1}{12}-\frac{1}{9}\cdot\frac{1}{16}+\frac{5}{3^4}\frac{1}{4^3}+\dotsb        \right]\\
+        &\approx 2.15407
+    \end{align*}
+
+\end{enumerate}
+\end{document}
